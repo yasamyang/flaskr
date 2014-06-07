@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <div align="center">
+	 <table>    
+		<tr align="left" valign="top">    
+		  <td align="center">
+		  <h3>Select the Robot types</h3>   
+			<form action="{{ url_for('addRot_entry') }}" method=post class=add-entry>    
+			  <p><select name="selRot" size="5">  
+                {% for rot in dataRot %}
+                {% if rot == selRot %}
+				<option selected value={{rot}}>{{rot}}</option> 
+                {% else %}
+                <option value={{rot}}>{{rot}}</option> 
+                {% endif %}
+				{% endfor %}
+			  </select><input name="submitName1" type="SUBMIT" value="Select" >  
+			  </p>  
+			</form>  
+		  </td>
+		   
+		  <td align="center">   
+		  <h3>Select the Environments</h3>  
+			<form action="{{ url_for('addEnv_entry') }}" method=post class=add-entry>    
+			  <p><select name="selEnv" size="5">    
+				{% for env in dataEnv %}
+                {% if env == selEnv %}
+				<option selected value={{env}}>{{env}}</option> 
+                {% else %}
+                <option value={{env}}>{{env}}</option> 
+                {% endif %}
+				{% endfor %}           
+			  </select><input name="submitName2" type="SUBMIT" value="Select">  
+			  </p>  
+			</form>  
+		  </td>  
+		</tr>  
+	  </table> 
+	</div>
+<p align="center"></p>
+
+<FORM align="center" action="{{ url_for('action') }}" method=post >
+	<h3>Send the Command:</h3>
+	<INPUT TYPE="text" NAME="command" size="60" maxlength="100" height="50">
+	<INPUT TYPE="submit" NAME="action" VALUE="Action">
+	</FORM>
+	
+<!-- htn planning start-->
+	<p align="center"><font color="#FF0000" size="5"><a name="HTN Planning">HTN Planning</a></font></p>
+	
+	<form action="{{ url_for('action') }}" method=post>
+     <table align="center">
+      <tr>
+        <td bgcolor="#C0C0C0"><FONT SIZE=4>World State</td>
+      </tr>
+	  <tr>
+       <td>
+         <textarea rows="4" name="html" cols="50" style="font-size:20px">{{WS}}</textarea>
+       </td>
+     </tr>
+	 <tr>
+       <td bgcolor="#C0C0C0"><FONT SIZE=4>Steps of HTN Planning</td>
+     </tr>
+    <tr>
+      <td>
+        <textarea rows="4" name="html" cols="50" style="font-size:20px">{{ entries }} </textarea>
+     </td>
+   </tr>
+	<tr>
+      <td bgcolor="#C0C0C0"><FONT SIZE=4>Current Step</td>
+    </tr>
+    <tr>
+      <td>
+        <textarea rows="2" name="html" cols="50" style="font-size:20px;color: red">(find cup)</textarea>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#C0C0C0">
+       <center><input type="submit" value="RE-Plan" name="re-plan">
+      </td>
+     </tr>
+    </table>
+  </form>
+<!-- htn planning end-->	
+  {% endif %}
+{% endblock %}

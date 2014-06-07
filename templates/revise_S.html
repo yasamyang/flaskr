@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>revise Service</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('revise_S') }}" method=post>
+    <table>    
+    <tr align="left" valign="top">    
+      <td>
+        <dl>
+          <h3>
+          <dt>Service type:
+          <dd><input type=text size="60" name=name value="Composed Service"/>
+          <dt>Service Name:
+          <dd><input type=text size="60" name=name value="Clean"/>
+          <dt>Input:
+          <dd><input type=text size="60" name=input value="?object"/>
+          <dt>Output:
+          <dd><input type=text size="60" name=output value=""/>
+          <dt>Precondition:
+          <dd><input type=text size="60" name=precon value="notClean"/>
+          <dt>Effect:
+          <dd><input type=text size="60" name=effect value="isClean"/>   
+          </h3>
+        </dl>
+      </td>
+
+      <td align="left">
+      <h3>   
+      <dt>Process:
+      <dd><textarea name=text rows=25 cols=50>
+REPEAT-WHILE:
+WHILE-CONDITION:
+  (notClean ?object)
+  IF:
+    (not(detected ?obj))
+  THEN:
+    ((!find ?obj)(!move ?obj)(detect ?obj)(CONTINUOUS))
+  IF:
+    ((on ?o ?obj)(graspable ?o ?o))
+  THEN:
+    ((get ?o)(put sink)(CONTINUOUS))
+END
+      </textarea>
+      </h3>
+      </td>
+    </tr>
+  </table>
+  <h1>
+  <dd><input type=submit value=revise>
+  </h1)
+  </form>
+{% endblock %}

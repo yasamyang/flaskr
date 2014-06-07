@@ -1,0 +1,5 @@
+MyHouse:(exist user)
+Bathroom:(exist user)
+Bedroom:(exist user)
+Kitchen:(inside cup cupboard)(closed cupboard)(at cupboard kitchen)
+Living_room:(at cup table)

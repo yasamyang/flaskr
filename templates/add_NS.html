@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>add New Service</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('login') }}" method=post>
+    <table>    
+    <tr align="left" valign="top">    
+      <td>
+        <dl>
+          <h3>
+          <dt>Service Name:
+          <dd><input type=text size="60" name=name>
+          <dt>Input:
+          <dd><input type=text size="60" name=input>
+          <dt>Output:
+          <dd><input type=text size="60" name=output>
+          <dt>Precondition:
+          <dd><input type=text size="60" name=precon>
+          <dt>Effect:
+          <dd><input type=text size="60" name=effect>
+          <dt>Description:
+          <dd><textarea name=text rows=5 cols=60></textarea>
+          <dd><input type=submit value=submit>
+          </h3>
+        </dl>
+      </td>
+
+      <td align="center">
+      <h3>Select Service type</h3>   
+      <form action="{{ url_for('addRot_entry') }}" method=post class=add-entry>  <p><select name="selSt" size="1">  
+        <option selected value="atomic">atomic service</option> 
+        <option value="composed">compsed service</option> 
+        </select><input name="submitName1" type="SUBMIT" value="Select" >  
+        </p>  
+      </form>  
+      </td>
+    </tr>
+  </table>
+  </form>
+{% endblock %}

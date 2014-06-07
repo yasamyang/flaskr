@@ -1,0 +1,5 @@
+MyHouse:(exist user)
+Bathroom:(exist cup)(exist user)
+Bedroom:(exist cup)(exist user)
+Kitchen:(exist cup)(exist user)
+Living_room:(exist cup)(exist user)
